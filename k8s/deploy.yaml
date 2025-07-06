@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-app
+  labels:
+    app: python-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: python-app
+  template:
+    metadata:
+      labels:
+        app: python-app
+    spec:
+      containers:
+      - name: python-app
+        image: alan297/python-app:v4
+        ports:
+        - containerPort: 5000
+        readinessProbe:
+          httpGet:
+            path: /api/v1/healthz # Use your health endpoint
+            port: 5000
+          initialDelaySeconds: 5 # Give app time to start
+          periodSeconds: 5      # Check every 5 seconds
+          timeoutSeconds: 2     # Timeout if no response in 2 seconds
+          failureThreshold: 3   # Mark unhealthy after 3 failures
+    
