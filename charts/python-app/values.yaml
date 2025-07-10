@@ -10,8 +10,8 @@ nameOverride: ""
 fullnameOverride: ""
 
 serviceAccount:
-  create: true
-  automount: true
+  create: false
+  automount: false
   annotations: {}
   name: ""
 
@@ -27,7 +27,7 @@ service:
   port: 80
 
 ingress:
-  enabled: false
+  enabled: true
   className: "nginx"
   annotations: {}
   hosts:
