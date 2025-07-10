@@ -3,7 +3,7 @@ replicaCount: 1
 image:
   repository: alan297/python-app
   pullPolicy: IfNotPresent
-  tag: "v4"
+  tag: v4
 
 imagePullSecrets: []
 nameOverride: ""
@@ -24,7 +24,7 @@ securityContext: {}
 
 service:
   type: ClusterIP
-  port: 80
+  port: 5000
 
 ingress:
   enabled: true
@@ -33,7 +33,7 @@ ingress:
   hosts:
     - host: python.local
       paths:
-        - path: /
+        - path: /api/v1/healthz
           pathType: ImplementationSpecific
   tls: []
 
