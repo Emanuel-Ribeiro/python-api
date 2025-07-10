@@ -33,7 +33,7 @@ ingress:
   hosts:
     - host: python.local
       paths:
-        - path: /api/v1/healthz
+        - path: /
           pathType: ImplementationSpecific
   tls: []
 
